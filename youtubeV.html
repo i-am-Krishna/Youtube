@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <nav class="navbar">
+        <div class="toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <img src="img/logout.png" alt="" class="logo">
+        <div class="search-box">
+            <input type="text" id="search" placeholder="search">
+            <button onclick="searchV()" id="search-btn"><img src="img/search.png"></button>
+        </div>
+        <div class="user-icons">
+            <img src="img/video.PNG" class="icon" alt="">
+            <img src="img/grid.PNG" class="icon" alt="">
+            <img src="img/bell.PNG" class="icon" alt="">
+     </div>
+     </nav>
+    
+    <div id="singleData"></div>
+</body>
+</html>
+<script>
+
+    // function searchV(){
+    //     window.location.href="./YouTube1.html"
+    // }
+
+let showData = document.getElementById("singleData")
+
+
+let el = JSON.parse(localStorage.getItem("video"))
+console.log(el)
+
+
+
+
+const appendVideos = (data) => {
+    showData.innerHTML = null ;
+
+    try{
+    
+    //    let div = document.createElement("div")
+       
+
+       let p = document.createElement("h2")
+
+       p.innerText = el.snippet.title ;
+
+       let iframe = document.createElement("iframe")
+
+       iframe.src = `https://www.youtube.com/embed/${el.id.videoId}`
+
+
+       console.log(iframe)
+
+
+            iframe.height="90%"
+            iframe.width="100%"
+            iframe.allow="fullscreen"
+
+       showData.append(iframe,p)
+        
+    //    showData.append(div)
+
+   }
+    
+    catch(error){
+        console.log("Error",error)
+    }
+
+
+
+
+}
+
+appendVideos(el)
+
+
+
+
+
+</script>

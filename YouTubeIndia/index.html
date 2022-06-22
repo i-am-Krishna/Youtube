@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <img src="img/logout.png" alt="" class="logo">
+        <div class="search-box">
+            <input type="text" id="search" placeholder="search">
+            <button onclick="searchV()" id="search-btn"><img src="img/search.png"></button>
+        </div>
+        <div class="user-icons">
+            <img src="img/video.PNG" class="icon" alt="">
+            <img src="img/grid.PNG" class="icon" alt="">
+            <img src="img/bell.PNG" class="icon" alt="">
+            <img src="https://via.placeholder.com/30" class="icon user-logo" alt="">
+        </div>
+    </nav>
+    <div class="side-bar sideA">
+        <div class="side-bar">
+            <a href="#" class="img-links"><img src="img/home.PNG" alt="">home</a>
+            <a href="#" class="img-links"><img src="img/explore.PNG" alt="">explore</a>
+            <a href="#" class="img-links"><img src="img/subscription.PNG" alt="">subscription</a>
+            <hr class="downData">
+            <a href="#" class="img-links"><img src="img/library.PNG" alt="">library</a>
+            <a href="#" class="img-links"><img src="img/history.PNG" alt="">history</a>
+            <a href="#" class="img-links"><img src="img/your-video.PNG" alt="">your video</a>
+            <a href="#" class="img-links"><img src="img/watch-later.PNG" alt="">watch leater</a>
+            <a href="#" class="img-links"><img src="img/liked video.PNG" alt="">like video</a>
+            <a href="#" class="img-links"><img src="img/show more.PNG" alt="">show more</a>
+        </div>
+
+    </div>
+    
+
+
+
+
+
+<div id="showData"></div>
+</body>
+
+<script>
+
+    // const   searchV = async () => {
+        const trendingV = async ()=>{
+
+        
+        try{
+
+            // let search = document.getElementById("search").value ;
+
+            // let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${search}&key=AIzaSyCx0vX0G4YsEJhYJAMVcc8unhl1Qf4E080&maxResults=20`)
+
+
+            
+let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?Location=India&part=snippet&maxResults=20&order=viewCount&key=AIzaSyCx0vX0G4YsEJhYJAMVcc8unhl1Qf4E080`) 
+
+            let data = await res.json()
+
+            // console.log("Data",data.items)
+            
+            appendVideos(data.items)
+        }
+
+        catch(err){
+            console.log("Error",err)
+        }
+    }
+    trendingV()
+
+    const showData = document.getElementById("showData") ;
+
+
+const appendVideos = (data) => {
+    showData.innerHTML = null ;
+
+    try{
+        data.forEach((el) => {
+       
+       let div = document.createElement("div")
+       div.addEventListener("click",()=>{
+           localStorage.setItem("trendvideo",JSON.stringify(el))
+           console.log(el)
+        window.location.href="./youtubeVideo.html"
+       })
+
+       let p = document.createElement("p")
+       p.innerText = el.snippet.title ;
+
+       let iframe = document.createElement("img")
+
+       iframe.src = el.snippet.thumbnails.high.url
+
+
+       console.log(iframe)
+
+
+            iframe.style.height="80%"
+            iframe.style.width="100%"
+
+
+       div.append(iframe,p)
+       showData.append(div)
+
+   });
+    }
+    catch(error){
+        console.log("Error",error)
+    }
+
+    
+
+}
+
+
+</script>
+</html>
+
+ 
+
+<!-- // iframe.allow="fullscreen"
+
+// iframe.src = el.snippet.thumbnails.default.url; -->
+
+<!-- https://www.youtube.com/embed/HB5jBut9L8c -->
+
+<!-- //    iframe.src = `https://www.youtube.com/embed/${el.snippet.thumbnails.default.url}` -->
+
+
+<!-- AIzaSyCx0vX0G4YsEJhYJAMVcc8unhl1Qf4E080 -->
+
+
+<!-- API URL --- https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=games&key=AIzaSyCVnbHZoFSxG8yjxch6vZex0EPVxtqcbVQ  -->
+
+   <!-- iframe.src = `https://www.youtube.com/embed/${el.snippet.thumbnails.default.url}` -->
+
+
+<!--    
+// https://youtube.googleapis.com/youtube/v3/search?Location=India&part=snippet&maxResults=20&order=viewCount&key=AIzaSyBTqAhVMabDRZhHn-TIWJdUBsaqbQnjApQ
+
+
+// let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?Location=India&part=snippet&maxResults=20&order=viewCount&key=AIzaSyCx0vX0G4YsEJhYJAMVcc8unhl1Qf4E080`) -->
