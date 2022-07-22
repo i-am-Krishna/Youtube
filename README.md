@@ -32,8 +32,6 @@ Krishna Kumar Gupta - (https://github.com/Nobita-nobii)
 
 ## Snippets
 
-![image](![image](https://user-images.githubusercontent.com/84156772/180442283-eab003ac-e545-4f15-a5b9-7b5ed5d6435a.png))
+![image](![image](https://user-images.githubusercontent.com/65751330/171203608-18cf5430-fdcd-4e2e-8be3-a3fd0c3e5396.png))
 <p align="center">Landing Page</p>
-
-![image](![image](https://user-images.githubusercontent.com/84156772/180442413-ee95ced4-1f27-42c5-874a-a3dc7f3f2148.png))
-<p align="center">After Search Result</p>
+ 
